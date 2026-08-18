@@ -1,0 +1,24 @@
+# Default configuration for the OTTO project.
+# Overrides are deep-merged over the built-in defaults in src/otto/config.py.
+# Relative paths are resolved against the project root.
+
+seed: 42
+
+data:
+  raw_train: data/raw_data/train.jsonl
+  raw_test: data/raw_data/test.jsonl
+  processed_dir: data/processed
+  # Split the last N days of events into a validation set.
+  valid_days: 7
+  # Sessions per parquet shard when preparing data.
+  shard_sessions: 500000
+
+model:
+  name: popularity
+  top_k: 20
+  # Exponential recency decay half-life in seconds; null = plain counts.
+  recency_half_life: null
+
+submission:
+  dir: submissions
+  filename: submission.csv
